@@ -1,11 +1,11 @@
 require 'rubygems'
-require 'spork'
+# require 'spork'
 
 #uncomment the following line to use spork with the debugger
 #require 'spork/ext/ruby-debug'
 
-Spork.prefork do
-  ENV["RAILS_ENV"] ||= 'test'
+#Spork.prefork do
+#  ENV["RAILS_ENV"] ||= 'test'
 
   if ENV['HEADLESS']
     require 'headless'
@@ -26,17 +26,17 @@ Spork.prefork do
     end
   end
 
-  require "rails/application"
-  # Prevent main application to eager_load in the prefork block (do not load files in autoload_paths)
-  Spork.trap_method(Rails::Application, :eager_load!)
-  Spork.trap_method(Rails::Application::RoutesReloader, :reload!)
+  #require "rails/application"
+  ## Prevent main application to eager_load in the prefork block (do not load files in autoload_paths)
+  #Spork.trap_method(Rails::Application, :eager_load!)
+  #Spork.trap_method(Rails::Application::RoutesReloader, :reload!)
 
 #  require 'webmock/rspec'
 #  WebMock.allow_net_connect!
   require File.expand_path("../../config/environment", __FILE__)
 
   # Load all railties files
-  Rails.application.railties.all { |r| r.eager_load! }
+  #Rails.application.railties.all { |r| r.eager_load! }
   require 'rspec/rails'
   require 'rspec/autorun'
   require 'webmock/rspec'
@@ -46,9 +46,9 @@ Spork.prefork do
   require 'capybara/poltergeist'
   require 'sidekiq/testing'
   require 'coveralls'
-end
+#end
 
-Spork.each_run do
+# Spork.each_run do
   Coveralls.wear!
 
   WebMock.disable_net_connect!(:allow_localhost => true)
@@ -60,7 +60,7 @@ Spork.each_run do
     load "#{Rails.root}/db/schema.rb"
     ActiveRecord::Migrator.up('db/migrate') # then run migrations
   end
-  FactoryGirl.reload
+  FactoryGirl.find_definitions
   DatabaseCleaner.clean_with :truncation
 
   Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
@@ -141,5 +141,5 @@ Spork.each_run do
     end
 
   end
-
-end
+#
+#end

@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include ActionView::RecordIdentifier
   protect_from_forgery
   before_filter :load_user, :check_mxit_input_for_redirect
   after_filter :send_stats

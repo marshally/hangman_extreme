@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem "rails", "~> 3.2.13"
+gem 'rails', '4.0.0.beta1'
 
 platforms :jruby do
   gem 'activerecord-jdbcpostgresql-adapter', :require => false
@@ -25,6 +25,9 @@ gem 'puma'
 gem 'whenever', :require => false
 
 gem 'sidekiq'
+# todo favor Strong Parameters
+gem 'protected_attributes'
+
 gem 'sinatra', '>= 1.3.0', :require => nil # for sidekiq
 gem 'slim', :require => nil # for sidekiq
 
@@ -51,7 +54,8 @@ group :assets do
     gem 'libv8', '~> 3.11.8'
     gem 'therubyracer'
   end
-#  gem 'coffee-rails'
+  # gem 'sass-rails',   '~> 4.0.0.beta1'
+  # gem 'coffee-rails', '~> 4.0.0.beta1'
   gem 'uglifier', '>= 1.0.3'
   gem "jquery-rails"
 end
@@ -93,7 +97,7 @@ group :test do
   gem 'simplecov', :require => false
   gem 'simplecov-rcov', :require => false
   gem 'flog'
-  gem "spork-rails"
+  # gem "spork-rails"
   gem 'webmock'
   gem 'vcr'
   gem 'coveralls', require: false

@@ -1,8 +1,8 @@
 HangmanLeague::Application.routes.draw do
   get "purchase_transactions", to: 'purchase_transactions#index', as: 'purchases'
   get "purchase_transactions/new", as: 'new_purchase'
-  match "purchase_transactions/create", to: 'purchase_transactions#create', as: 'create_purchase'
-  match "Transaction/PaymentRequest", to: 'purchase_transactions#simulate_purchase', as: 'mxit_purchase'
+  get "purchase_transactions/create", to: 'purchase_transactions#create', as: 'create_purchase'
+  get "Transaction/PaymentRequest", to: 'purchase_transactions#simulate_purchase', as: 'mxit_purchase'
   get "explain/:action", as: 'explain', controller: 'explain'
   get "airtime_vouchers", to: 'airtime_vouchers#index', as: 'airtime_vouchers'
 
@@ -29,15 +29,15 @@ HangmanLeague::Application.routes.draw do
   resources :winners, :except => [:edit, :update, :create, :new, :destroy]
   resources :redeem_winnings, :except => [:edit, :update, :destroy]
 
-  match '/define/:word', to: 'words#define', as: 'define_word'
-  match '/auth/:provider/callback', to: 'sessions#create'
-  match '/auth/:provider/failure', to: 'sessions#failure'
-  match '/auth/failure', to: 'sessions#failure'
-  match '/authorize', to: 'users#mxit_authorise', as: 'mxit_authorise'
-  match '/about', to: 'explain#about', as: 'about'
-  match '/terms', to: 'explain#terms', as: 'terms'
-  match '/privacy', to: 'explain#privacy', as: 'privacy'
-  match '/logout', to: 'sessions#destroy', as: 'logout'
+  get '/define/:word', to: 'words#define', as: 'define_word'
+  get '/auth/:provider/callback', to: 'sessions#create'
+  get '/auth/:provider/failure', to: 'sessions#failure'
+  get '/auth/failure', to: 'sessions#failure'
+  get '/authorize', to: 'users#mxit_authorise', as: 'mxit_authorise'
+  get '/about', to: 'explain#about', as: 'about'
+  get '/terms', to: 'explain#terms', as: 'terms'
+  get '/privacy', to: 'explain#privacy', as: 'privacy'
+  get '/logout', to: 'sessions#destroy', as: 'logout'
 
   root :to => 'games#index'
 end

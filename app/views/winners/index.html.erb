@@ -1,5 +1,5 @@
 <h4><%= params[:period] %> <i><%= params[:reason] %></i> Winners</h4>
-<% if @winners.empty? %>
+<% if @winners.all.empty? %>
     <p><b>Coming Soon</b></p>
 <% else %>
 <table class="table table-bordered table-hover table-condensed">
