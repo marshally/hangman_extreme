@@ -48,19 +48,9 @@ require 'rubygems'
   require 'coveralls'
 #end
 
-# Spork.each_run do
+#Spork.each_run do
   Coveralls.wear!
-
-  WebMock.disable_net_connect!(:allow_localhost => true)
-  def in_memory_database?
-    Rails.configuration.database_configuration[ENV["RAILS_ENV"]]['database'] == ':memory:'
-  end
-
-  if in_memory_database?
-    load "#{Rails.root}/db/schema.rb"
-    ActiveRecord::Migrator.up('db/migrate') # then run migrations
-  end
-  FactoryGirl.find_definitions
+#  FactoryGirl.find_definitions
   DatabaseCleaner.clean_with :truncation
 
   Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
@@ -77,7 +67,7 @@ require 'rubygems'
       Capybara::Poltergeist::Driver.new(app, window_size: [320,480] )
     end
     Capybara.javascript_driver = :poltergeist
-    Capybara.default_wait_time = 20
+    Capybara.default_wait_time = 30
 
     config.filter_run_excluding :redis => true if ENV["EXCLUDE_REDIS_SPECS"]
 
@@ -87,7 +77,7 @@ require 'rubygems'
     #     --seed 1234
     config.order = "random"
     config.before(:suite) do
-      DatabaseCleaner.strategy = :transaction
+      DatabaseCleaner.strategy = :truncation
       (@@headless = Headless.new).start if ENV['HEADLESS']
     end
 
@@ -100,7 +90,7 @@ require 'rubygems'
     end
 
     config.after(:all, :js => true) do
-      DatabaseCleaner.strategy = :transaction
+      DatabaseCleaner.strategy = :truncation
     end
 
     config.before(:each) do

@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_filter :verify_authenticity_token
+
   def create
     self.current_user = User.find_or_create_from_auth_hash(auth_hash)
     redirect_to '/'

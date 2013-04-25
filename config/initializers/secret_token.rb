@@ -4,6 +4,6 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-HangmanLeague::Application.config.secret_token = '4d7b54acba2e0fa38abc615b53d2d4e6e945326ec87259dc81866781465a88712cb786dfec8d2b68d6ae72091aa66949912a60742e9db70fc21526ad755366a1'
+HangmanLeague::Application.config.secret_token = ENV['APP_SECRET_TOKEN']
 # TODO enable at one point
-# HangmanLeague::Application.config.secret_key_base = 'new secret key base'
+HangmanLeague::Application.config.secret_key_base = ENV['APP_SECRET_KEY_BASE']

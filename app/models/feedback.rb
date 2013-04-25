@@ -1,4 +1,6 @@
 class Feedback < ActiveRecord::Base
+  attr_accessible :full_message, :user, :support_type
+
   validates :message, presence: true
 
   belongs_to :user
