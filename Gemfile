@@ -88,6 +88,7 @@ group :test do
     gem 'sqlite3'
     gem 'pg'
   end
+  gem 'shoulda-matchers'
   gem 'test_after_commit'
   gem 'poltergeist'
   gem 'selenium-webdriver'
