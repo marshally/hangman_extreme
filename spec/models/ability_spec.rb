@@ -42,6 +42,57 @@ describe Ability do
 
     end
 
+    context "ChallengeGames" do
+
+      it "must be able to view games" do
+        @ability.should be_able_to(:read, ChallengeGame)
+      end
+
+      it "wont be able to read other users games" do
+        game = create(:challenge_game,
+                      participants: [build(:challenge_game_participant),
+                                     build(:challenge_game_participant)])
+        @ability.should_not be_able_to(:read, game)
+      end
+
+      it "must be able to read own users games" do
+        game = create(:challenge_game,
+                      participants: [build(:challenge_game_participant, user: @user),
+                                     build(:challenge_game_participant)])
+        @ability.should be_able_to(:read, game)
+      end
+
+      it "must be able to create games" do
+        @ability.should be_able_to(:create, ChallengeGame)
+      end
+
+      it "wont be able to play letters on other users games" do
+        game = create(:challenge_game,
+                      participants: [build(:challenge_game_participant),
+                                     build(:challenge_game_participant)])
+        @ability.should_not be_able_to(:play_letter, game)
+      end
+
+      it "must be able to play letters on own users games when turn" do
+        participant = build(:challenge_game_participant, user: @user)
+        game = create(:challenge_game,
+                      participants: [participant,
+                                     build(:challenge_game_participant)])
+        game.update_attribute(:active_participant,participant)
+        @ability.should be_able_to(:play_letter, game)
+      end
+
+      it "wont be able to play letters on own users games when not turn" do
+        participant = build(:challenge_game_participant)
+        game = create(:challenge_game,
+                      participants: [participant,
+                                     build(:challenge_game_participant, user: @user)])
+        game.update_attribute(:active_participant,participant)
+        @ability.should_not be_able_to(:play_letter, game)
+      end
+
+    end
+
     context "Feedback" do
 
       it "must be able to view" do
@@ -189,6 +240,57 @@ describe Ability do
       it "must be able to play letters on own users games" do
         game = create(:game, user: @user)
         @ability.should be_able_to(:play_letter, game)
+      end
+
+    end
+
+    context "ChallengeGames" do
+
+      it "must be able to view games" do
+        @ability.should be_able_to(:read, ChallengeGame)
+      end
+
+      it "wont be able to read other users games" do
+        game = create(:challenge_game,
+                      participants: [build(:challenge_game_participant),
+                                     build(:challenge_game_participant)])
+        @ability.should_not be_able_to(:read, game)
+      end
+
+      it "must be able to read own users games" do
+        game = create(:challenge_game,
+                      participants: [build(:challenge_game_participant, user: @user),
+                                     build(:challenge_game_participant)])
+        @ability.should be_able_to(:read, game)
+      end
+
+      it "wont be able to create games" do
+        @ability.should_not be_able_to(:create, ChallengeGame)
+      end
+
+      it "wont be able to play letters on other users games" do
+        game = create(:challenge_game,
+                      participants: [build(:challenge_game_participant),
+                                     build(:challenge_game_participant)])
+        @ability.should_not be_able_to(:play_letter, game)
+      end
+
+      it "must be able to play letters on own users games when turn" do
+        participant = build(:challenge_game_participant, user: @user)
+        game = create(:challenge_game,
+                      participants: [participant,
+                                     build(:challenge_game_participant)])
+        game.update_attribute(:active_participant,participant)
+        @ability.should be_able_to(:play_letter, game)
+      end
+
+      it "wont be able to play letters on own users games when not turn" do
+        participant = build(:challenge_game_participant)
+        game = create(:challenge_game,
+                      participants: [participant,
+                                     build(:challenge_game_participant, user: @user)])
+        game.update_attribute(:active_participant,participant)
+        @ability.should_not be_able_to(:play_letter, game)
       end
 
     end

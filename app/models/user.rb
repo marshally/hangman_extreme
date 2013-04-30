@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   has_many :redeem_winnings
   has_many :airtime_vouchers
   has_many :feedback
+  has_many :challenge_game_participants
+  has_many :challenge_games, through: :challenge_game_participants
 
   validates :provider, :uid, presence: true
   validates_uniqueness_of :uid, :scope => :provider
@@ -56,6 +58,10 @@ class User < ActiveRecord::Base
 
   def self.find_facebook_user(i)
     facebook.find_by_uid(i)
+  end
+
+  def active_challenge_game
+    challenge_games.incompleted.first
   end
 
   def set_user_info(info)

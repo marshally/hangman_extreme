@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.0.beta1'
+gem 'rails', '4.0.0.rc1'
 
 platforms :jruby do
   gem 'activerecord-jdbcpostgresql-adapter', :require => false
@@ -8,6 +8,7 @@ end
 platforms :ruby do
   gem 'pg'
 end
+gem 'redis'
 gem 'ohm'
 gem 'ohm-contrib', :require => 'ohm/contrib'
 
@@ -25,8 +26,8 @@ gem 'puma'
 gem 'whenever', :require => false
 
 gem 'sidekiq'
-# todo favor Strong Parameters
-gem 'protected_attributes'
+gem 'protected_attributes' # todo favor Strong Parameters
+gem 'rails-observers'
 
 gem 'sinatra', '>= 1.3.0', :require => nil # for sidekiq
 gem 'slim', :require => nil # for sidekiq
@@ -54,8 +55,8 @@ group :assets do
     gem 'libv8', '~> 3.11.8'
     gem 'therubyracer'
   end
-  # gem 'sass-rails',   '~> 4.0.0.beta1'
-  # gem 'coffee-rails', '~> 4.0.0.beta1'
+  # gem 'sass-rails',   '~> 4.0.0.rc1'
+  # gem 'coffee-rails', '~> 4.0.0.rc1'
   gem 'uglifier', '>= 1.0.3'
   gem "jquery-rails"
 end

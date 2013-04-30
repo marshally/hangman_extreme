@@ -15,6 +15,13 @@ class SessionsController < ApplicationController
     redirect_to '/', alert: params[:message]
   end
 
+  if Rails.env.test?
+    def test_login
+      self.current_user = User.find_by_id(params[:id])
+      redirect_to '/'
+    end
+  end
+
   protected
 
   def auth_hash

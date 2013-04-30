@@ -1,0 +1,22 @@
+<div id="<%= dom_id(challenge_game) %>">
+  <% if challenge_game.started? %>
+    <b style="color:purple;"><%= challenge_game.hangman_text %></b><br/>
+    <% if challenge_game.active_user == current_user %>
+      Your Turn
+      <p class="letters">
+        <% ("a".."z").to_a.in_groups_of((mxit_request? ? 9 : 100),false).each do |letters| -%>
+          <% letters.each do |letter| -%>
+            <%= challenge_letter_link(challenge_game,letter) %><% if mxit_request? %>&nbsp;<% end %>
+          <% end -%>
+          <br/>
+        <% end -%>
+      </p>
+    <% else %>
+      Opponent's Turn
+      <p class="letters">
+      </p>
+    <% end %>
+  <% else %>
+    Waiting for opponent
+  <% end %>
+</div>

@@ -1,5 +1,9 @@
 def add_headers(headers)
-  headers.each do |name, value|
-    page.driver.browser.header(name, value)
+  if page.driver.respond_to?(:headers=)
+    page.driver.headers = headers
+  else
+    headers.each do |name, value|
+      page.driver.browser.header(name, value)
+    end
   end
 end

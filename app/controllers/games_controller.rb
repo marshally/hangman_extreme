@@ -66,6 +66,8 @@ class GamesController < ApplicationController
     end
   end
 
+  protected
+
   def check_credits
     if current_user.credits > 0
       true

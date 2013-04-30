@@ -44,6 +44,11 @@ describe "games/index" do
     render
   end
 
+  it "must have a view challenge link on the menu" do
+    view.should_receive(:menu_item).with(anything,challenge_games_path,id: 'challenge')
+    render
+  end
+
   it "wont have a view rank link on the menu if guest" do
     view.stub!(:guest?).and_return(true)
     view.should_not_receive(:menu_item).with(anything,user_path(50),anything)

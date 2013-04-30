@@ -1,0 +1,14 @@
+<%= render @challenge_game %>
+
+<% if !request.xhr? && !mxit_request? %>
+<script type="text/javascript">
+  jQuery(document).ready(function() {
+    setTimeout(function() {
+      var source = new EventSource('<%= live_messages_path(:challenge_game_id => @challenge_game.id) %>');
+      source.addEventListener('updated', function(e) {
+        $.get('<%= challenge_game_path(@challenge_game, :format => 'js') %>')
+      });
+    }, true);
+  });
+</script>
+<% end %>

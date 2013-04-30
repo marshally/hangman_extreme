@@ -495,4 +495,23 @@ describe User do
 
   end
 
+  describe "active_challenge_game" do
+
+    before :each do
+      @user = create(:user)
+    end
+
+    it "must return incomplete games" do
+      game = create(:challenge_game, participants: [build(:challenge_game_participant, user: @user)])
+      @user.active_challenge_game.should == game
+    end
+
+    it "wont return complete games" do
+      game = create(:challenge_game, participants: [build(:challenge_game_participant)])
+      game.update_attribute(:completed, true)
+      @user.active_challenge_game.should_not == game
+    end
+
+  end
+
 end

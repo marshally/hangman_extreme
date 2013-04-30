@@ -5,7 +5,8 @@ require 'rubygems'
 #require 'spork/ext/ruby-debug'
 
 #Spork.prefork do
-#  ENV["RAILS_ENV"] ||= 'test'
+  ENV["RAILS_ENV"] ||= 'test'
+  ENV["RACK_ENV"] ||= 'test'
 
   if ENV['HEADLESS']
     require 'headless'
@@ -61,10 +62,16 @@ require 'rubygems'
     c.ignore_localhost = true
   end
 
+  Capybara.server do |app, port|
+    Puma::Server.new(app).tap do |s|
+      s.add_tcp_listener '127.0.0.1', port
+    end.run.join
+  end
+
   RSpec.configure do |config|
     config.include FactoryGirl::Syntax::Methods
     Capybara.register_driver :poltergeist do |app|
-      Capybara::Poltergeist::Driver.new(app, window_size: [320,480] )
+      Capybara::Poltergeist::Driver.new(app, window_size: [320,480], js_errors: false )
     end
     Capybara.javascript_driver = :poltergeist
     Capybara.default_wait_time = 30
