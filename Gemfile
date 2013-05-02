@@ -1,9 +1,10 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.0.rc1'
+gem 'rails', '4.0.0.beta1'
 
 platforms :jruby do
-  gem 'activerecord-jdbcpostgresql-adapter', :require => false
+  gem 'activerecord-jdbc-adapter', '1.3.0.beta1', :require => false
+  gem 'activerecord-jdbcpostgresql-adapter', '1.3.0.beta1', :require => false
 end
 platforms :ruby do
   gem 'pg'
@@ -12,9 +13,9 @@ gem 'redis'
 gem 'ohm'
 gem 'ohm-contrib', :require => 'ohm/contrib'
 
-platforms :jruby do
-  gem 'jruby-openssl'
-end
+#platforms :jruby do
+#  gem 'jruby-openssl'
+#end
 gem 'cancan'
 gem 'omniauth'
 gem 'omniauth-facebook'
@@ -76,18 +77,12 @@ end
 group :test do
   platforms :jruby do
     gem 'jdbc-mysql'
-    gem 'activerecord-jdbcmysql-adapter', :require => false
+    gem 'activerecord-jdbcmysql-adapter', '1.3.0.beta1', :require => false
+    gem 'activerecord-jdbcsqlite3-adapter', '1.3.0.beta1', :require => false
   end
   platforms :ruby do
     gem 'mysql2'
-  end
-  platforms :jruby do
-    gem 'activerecord-jdbcsqlite3-adapter', :require => false
-    gem 'activerecord-jdbcpostgresql-adapter', :require => false
-  end
-  platforms :ruby do
     gem 'sqlite3'
-    gem 'pg'
   end
   gem 'shoulda-matchers'
   gem 'test_after_commit'

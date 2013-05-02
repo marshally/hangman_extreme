@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       Accept:
-      - '*/*'
+      - "*/*"
       User-Agent:
       - Ruby
   response:
@@ -36,7 +36,7 @@ http_interactions:
       Server:
       - Apache
       Somaerror:
-      - '106; Unknown publisher id null; adspace id: null'
+      - ! '106; Unknown publisher id null; adspace id: null'
       Vary:
       - Accept-Encoding
       Content-Length:
@@ -45,9 +45,9 @@ http_interactions:
       - keep-alive
     body:
       encoding: US-ASCII
-      string: <p><img src="http://falcon833.startdedicated.com/oapi/img/adspacer.gif?e=106"
-        alt="" /></p>
-    http_version: 
+      string: "<p><img src=\"http://falcon833.startdedicated.com/oapi/img/adspacer.gif?e=106\"\
+        \ alt=\"\" /></p>"
+    http_version:
   recorded_at: Fri, 05 Apr 2013 12:27:00 GMT
 - request:
     method: get
@@ -57,7 +57,7 @@ http_interactions:
       string: ''
     headers:
       Accept:
-      - '*/*'
+      - "*/*"
       User-Agent:
       - Ruby
   response:
@@ -85,7 +85,7 @@ http_interactions:
       Server:
       - Apache
       Somaerror:
-      - '106; Unknown publisher id null; adspace id: null'
+      - ! '106; Unknown publisher id null; adspace id: null'
       Vary:
       - Accept-Encoding
       Content-Length:
@@ -94,9 +94,9 @@ http_interactions:
       - keep-alive
     body:
       encoding: US-ASCII
-      string: <p><img src="http://falcon835.startdedicated.com/oapi/img/adspacer.gif?e=106"
-        alt="" /></p>
-    http_version: 
+      string: "<p><img src=\"http://falcon835.startdedicated.com/oapi/img/adspacer.gif?e=106\"\
+        \ alt=\"\" /></p>"
+    http_version:
   recorded_at: Fri, 05 Apr 2013 12:27:01 GMT
 - request:
     method: get
@@ -106,14 +106,13 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/534.34 (KHTML, like Gecko)
-        PhantomJS/1.9.0 Safari/534.34
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.0 Safari/534.34
       X-Forwarded-For:
       - 127.0.0.1
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - '*/*'
+      - "*/*"
   response:
     status:
       code: 200
@@ -139,7 +138,7 @@ http_interactions:
       Server:
       - Apache
       Somaerror:
-      - '106; Unknown publisher id null; adspace id: null'
+      - ! '106; Unknown publisher id null; adspace id: null'
       Vary:
       - Accept-Encoding
       Content-Length:
@@ -148,8 +147,85 @@ http_interactions:
       - keep-alive
     body:
       encoding: UTF-8
-      string: <p><img src="http://ec2-50-19-218-141.compute-1.amazonaws.com/oapi/img/adspacer.gif?e=106"
-        alt="" /></p>
-    http_version: 
+      string: "<p><img src=\"http://ec2-50-19-218-141.compute-1.amazonaws.com/oapi/img/adspacer.gif?e=106\"\
+        \ alt=\"\" /></p>"
+    http_version:
   recorded_at: Thu, 25 Apr 2013 12:18:08 GMT
+- request:
+    method: get
+    uri: http://ox-d.shinka.sh/ma/1.0/arj?auid=245774&c.age=&c.gender=
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla Compatible/5.0 Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:14.0) Gecko/20100101 Firefox/14.0.1
+      X-Forwarded-For:
+      - 127.0.0.1
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Vary:
+      - Accept
+      Set-Cookie:
+      - OX_u=635b1665-9717-e168-0bbe-8e13b9837a2d_a_1367327037; Version=1; Expires=Wed, 30-Apr-2014 13:03:58 GMT; Max-Age=31536000; Path=/
+      Server:
+      - MochiWeb/1.1 WebMachine/1.9.2 (someone had painted it blue)
+      Pragma:
+      - no-cache
+      P3p:
+      - CP="CUR ADM OUR NOR STA NID"
+      Expires:
+      - Mon, 26 Jul 1997 05:00:00 GMT
+      Date:
+      - Tue, 30 Apr 2013 13:03:58 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '3160'
+      Cache-Control:
+      - private, max-age=0, no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: |
+        {"ads":
+         {
+          "version": 1,
+          "count": 1,
+          "ad": [
+                {
+                 "adunitid":245774,
+                 "adid":1057605,
+                 "type":"image",
+                 "html":"<a href='http://ox-d.shinka.sh/ma/1.0/rc?ai=635b1665-9717-e168-0bbe-8e13b9837a2d&ts=1fHNpZD00ODQ5NnxyYWlkPTJlZjU0OTBjLWY4MjQtNGYzZi05MjFiLTA0MjEzODlkZDM0M3xhdWlkPTI0NTc3NHxhaWQ9MTA1NzYwNXxwdWI9MzQzNTh8bGlkPTYzOTExNHx1PTF8dD05fHJpZD0xYTljYzk3OC0yODI5LTRlYjQtOGQxZS1mOWRjZDJhZGYyODJ8b2lkPTE5MjY0MXxibT1CVVlJTkcuR1VBUkFOVEVFREVYQ0xVU0lWRXxwYz1aQVJ8cD00NTAwMHxhYz1aQVJ8cG09UFJJQ0lORy5DUE18cnQ9MTM2NzMyNzAzOHxwcj00NTAwMHxhZHY9MzUzMTU' target='_self'><img src='http://ox-i.shinka.sh/bba/bbaf2d46-b832-428c-9e22-14accb9dbd89/0f0/0f07a16554512ed7a46d69cc62ab31de.jpg' height='50' width='300' border='0' alt='Low Prices for Baby at Shoprite'></a><div id='beacon_90036602' style='position: absolute; left: 0px; top: 0px; visibility: hidden;'><img src='http://ox-d.shinka.sh/ma/1.0/ri?ai=635b1665-9717-e168-0bbe-8e13b9837a2d&ts=1fHNpZD00ODQ5NnxyYWlkPTJlZjU0OTBjLWY4MjQtNGYzZi05MjFiLTA0MjEzODlkZDM0M3xhdWlkPTI0NTc3NHxhaWQ9MTA1NzYwNXxwdWI9MzQzNTh8bGlkPTYzOTExNHx1PTF8dD05fHJpZD0xYTljYzk3OC0yODI5LTRlYjQtOGQxZS1mOWRjZDJhZGYyODJ8b2lkPTE5MjY0MXxibT1CVVlJTkcuR1VBUkFOVEVFREVYQ0xVU0lWRXxwYz1aQVJ8cD00NTAwMHxhYz1aQVJ8cG09UFJJQ0lORy5DUE18cnQ9MTM2NzMyNzAzOHxwcj00NTAwMHxhZHY9MzUzMTU&cb=90036602'/></div>\n",
+                 "is_fallback":0,
+                 "creative":[
+                   {
+                     "width":"300",
+                     "height":"50",
+                     "alt":"Low Prices for Baby at Shoprite",
+                     "target":"_self",
+                     "mime":"image/jpeg",
+                     "media": "http://ox-i.shinka.sh/bba/bbaf2d46-b832-428c-9e22-14accb9dbd89/0f0/0f07a16554512ed7a46d69cc62ab31de.jpg",
+                     "tracking":{
+                       "impression":"http://ox-d.shinka.sh/ma/1.0/ri?ai=635b1665-9717-e168-0bbe-8e13b9837a2d&ts=1fHNpZD00ODQ5NnxyYWlkPTJlZjU0OTBjLWY4MjQtNGYzZi05MjFiLTA0MjEzODlkZDM0M3xhdWlkPTI0NTc3NHxhaWQ9MTA1NzYwNXxwdWI9MzQzNTh8bGlkPTYzOTExNHx1PTF8dD05fHJpZD0xYTljYzk3OC0yODI5LTRlYjQtOGQxZS1mOWRjZDJhZGYyODJ8b2lkPTE5MjY0MXxibT1CVVlJTkcuR1VBUkFOVEVFREVYQ0xVU0lWRXxwYz1aQVJ8cD00NTAwMHxhYz1aQVJ8cG09UFJJQ0lORy5DUE18cnQ9MTM2NzMyNzAzOHxwcj00NTAwMHxhZHY9MzUzMTU&cb=90036602",
+                       "inview":"http://ox-d.shinka.sh/ma/1.0/rvi?ai=635b1665-9717-e168-0bbe-8e13b9837a2d&ts=1fHNpZD00ODQ5NnxyYWlkPTJlZjU0OTBjLWY4MjQtNGYzZi05MjFiLTA0MjEzODlkZDM0M3xhdWlkPTI0NTc3NHxhaWQ9MTA1NzYwNXxwdWI9MzQzNTh8bGlkPTYzOTExNHx1PTF8dD05fHJpZD0xYTljYzk3OC0yODI5LTRlYjQtOGQxZS1mOWRjZDJhZGYyODJ8b2lkPTE5MjY0MXxibT1CVVlJTkcuR1VBUkFOVEVFREVYQ0xVU0lWRXxwYz1aQVJ8cD00NTAwMHxhYz1aQVJ8cG09UFJJQ0lORy5DUE18cnQ9MTM2NzMyNzAzOHxwcj00NTAwMHxhZHY9MzUzMTU&cb=90036602",
+                       "click":"http://ox-d.shinka.sh/ma/1.0/rc?ai=635b1665-9717-e168-0bbe-8e13b9837a2d&ts=1fHNpZD00ODQ5NnxyYWlkPTJlZjU0OTBjLWY4MjQtNGYzZi05MjFiLTA0MjEzODlkZDM0M3xhdWlkPTI0NTc3NHxhaWQ9MTA1NzYwNXxwdWI9MzQzNTh8bGlkPTYzOTExNHx1PTF8dD05fHJpZD0xYTljYzk3OC0yODI5LTRlYjQtOGQxZS1mOWRjZDJhZGYyODJ8b2lkPTE5MjY0MXxibT1CVVlJTkcuR1VBUkFOVEVFREVYQ0xVU0lWRXxwYz1aQVJ8cD00NTAwMHxhYz1aQVJ8cG09UFJJQ0lORy5DUE18cnQ9MTM2NzMyNzAzOHxwcj00NTAwMHxhZHY9MzUzMTU"
+                     }
+                   }
+                 ]
+                }
+          ]
+         }
+        }
+    http_version:
+  recorded_at: Tue, 30 Apr 2013 13:03:58 GMT
 recorded_with: VCR 2.4.0

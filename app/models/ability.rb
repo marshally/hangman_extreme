@@ -7,7 +7,7 @@ class Ability
       challenge_game.user_ids.include?(user.id)
     end
     can :play_letter, ChallengeGame do |challenge_game|
-      challenge_game.active_participant.user_id == user.id
+      challenge_game.started? && challenge_game.active_participant.user_id == user.id
     end
 
     can :read, Winner

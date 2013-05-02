@@ -67,7 +67,7 @@ describe Ability do
       end
 
       it "wont be able to play letters on other users games" do
-        game = create(:challenge_game,
+        game = create(:challenge_game, started: true,
                       participants: [build(:challenge_game_participant),
                                      build(:challenge_game_participant)])
         @ability.should_not be_able_to(:play_letter, game)
@@ -75,7 +75,7 @@ describe Ability do
 
       it "must be able to play letters on own users games when turn" do
         participant = build(:challenge_game_participant, user: @user)
-        game = create(:challenge_game,
+        game = create(:challenge_game, started: true,
                       participants: [participant,
                                      build(:challenge_game_participant)])
         game.update_attribute(:active_participant,participant)
@@ -84,9 +84,17 @@ describe Ability do
 
       it "wont be able to play letters on own users games when not turn" do
         participant = build(:challenge_game_participant)
-        game = create(:challenge_game,
+        game = create(:challenge_game, started: true,
                       participants: [participant,
                                      build(:challenge_game_participant, user: @user)])
+        game.update_attribute(:active_participant,participant)
+        @ability.should_not be_able_to(:play_letter, game)
+      end
+
+      it "wont be able to play letters on own games not started" do
+        participant = build(:challenge_game_participant, user: @user)
+        game = create(:challenge_game, started: false,
+                      participants: [participant])
         game.update_attribute(:active_participant,participant)
         @ability.should_not be_able_to(:play_letter, game)
       end

@@ -19,7 +19,9 @@ class ChallengeGamesController < ApplicationController
   end
 
   def play_letter
-
+    @challenge_game.add_choice(params[:letter])
+    @challenge_game.save
+    redirect_to(@challenge_game)
   end
 
   protected

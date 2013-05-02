@@ -102,6 +102,59 @@ describe ChallengeGame do
 
     end
 
+    context "add_choice" do
+
+      before :each do
+        @game = ChallengeGame.new(word: "test")
+        @game.stub!(:next_participant)
+      end
+
+      it "must allow to add choices" do
+        @game.add_choice("a")
+        @game.choices.should include("a")
+      end
+
+      it "must swap active participant if wrong choice" do
+        @game.should_receive(:next_participant)
+        @game.add_choice("a")
+      end
+
+      it "wont swap active participant if right choice" do
+        @game.should_not_receive(:next_participant)
+        @game.add_choice("t")
+      end
+
+      it "wont allow to add choices if more than a letter" do
+        @game.should_not_receive(:next_participant)
+        @game.add_choice("ab")
+        @game.choices.should_not include("a")
+        @game.choices.should_not include("b")
+      end
+
+      it "wont allow to add choices if completed" do
+        @game.completed = true
+        @game.add_choice("a")
+        @game.choices.should_not include("a")
+      end
+
+      it "must downcase letters" do
+        @game.add_choice("C")
+        @game.choices.should include("c")
+      end
+
+      it "must be able to add all letters" do
+        ("a".."z").each do |letter|
+          @game.add_choice(letter)
+          @game.choices.should include(letter)
+        end
+        ("1".."9").each do |number|
+          @game.add_choice(number)
+          @game.choices.should_not include(number)
+        end
+      end
+
+    end
+
   end
 
   context "Class Methods" do

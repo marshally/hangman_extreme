@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       Accept:
-      - "*/*"
+      - '*/*'
       User-Agent:
       - Ruby
   response:
@@ -127,26 +127,25 @@ http_interactions:
           </port>
         </service>
         </definitions>
-    http_version:
+    http_version: 
   recorded_at: Sun, 31 Mar 2013 10:43:19 GMT
 - request:
     method: post
     uri: http://pi.dynalias.net:3088/airtime/
     body:
       encoding: US-ASCII
-      string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><env:Envelope xmlns:xsd=\"\
-        http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
-        \ xmlns:tns=\"http://pi.dynalias.net:3088/airtime/\" xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\"\
-        ><env:Body><tns:getVoucher><getVoucherIn><user><%= ENV['FREEPAID_USER'] || 0 %></user><pass><%= ENV['FREEPAID_PASS'] || 0 %></pass><refno>RW1T20130331T1243</refno><network>branson</network><sellvalue>15</sellvalue></getVoucherIn></tns:getVoucher></env:Body></env:Envelope>"
+      string: <?xml version="1.0" encoding="UTF-8"?><env:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://pi.dynalias.net:3088/airtime/"
+        xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"><env:Body><tns:getVoucher><getVoucherIn><user>0</user><pass>0</pass><refno>RW1T20130331T1243</refno><network>branson</network><sellvalue>15</sellvalue></getVoucherIn></tns:getVoucher></env:Body></env:Envelope>
     headers:
       Soapaction:
-      - "\"http://pi.dynalias.net:3088/airtime/getVoucher\""
+      - '"http://pi.dynalias.net:3088/airtime/getVoucher"'
       Content-Type:
       - text/xml;charset=UTF-8
       Content-Length:
       - '480'
       Accept:
-      - "*/*"
+      - '*/*'
       User-Agent:
       - Ruby
   response:
@@ -166,26 +165,22 @@ http_interactions:
       - text/xml; charset=ISO-8859-1
     body:
       encoding: US-ASCII
-      string: "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?><SOAP-ENV:Envelope xmlns:SOAP-ENV=\"\
-        http://schemas.xmlsoap.org/soap/envelope/\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"\
-        \ xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:SOAP-ENC=\"\
-        http://schemas.xmlsoap.org/soap/encoding/\" xmlns:tns=\"http://pi.dynalias.net:3088/airtime/\"\
-        ><SOAP-ENV:Body><ns1:getVoucherResponse xmlns:ns1=\"http://pi.dynalias.net:3088/airtime/\"\
-        ><reply xsi:type=\"tns:getVoucherOut\"><status xsi:type=\"xsd:int\">1</status><message\
-        \ xsi:type=\"xsd:string\">success</message><balance xsi:type=\"xsd:float\"\
-        >499262.16</balance><pin xsi:type=\"xsd:string\">8556945164275</pin><serial\
-        \ xsi:type=\"xsd:string\">685137666468</serial><costprice xsi:type=\"xsd:float\"\
-        >13.58</costprice></reply></ns1:getVoucherResponse></SOAP-ENV:Body></SOAP-ENV:Envelope>"
-    http_version:
+      string: <?xml version="1.0" encoding="ISO-8859-1"?><SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://pi.dynalias.net:3088/airtime/"><SOAP-ENV:Body><ns1:getVoucherResponse
+        xmlns:ns1="http://pi.dynalias.net:3088/airtime/"><reply xsi:type="tns:getVoucherOut"><status
+        xsi:type="xsd:int">1</status><message xsi:type="xsd:string">success</message><balance
+        xsi:type="xsd:float">499262.16</balance><pin xsi:type="xsd:string">8556945164275</pin><serial
+        xsi:type="xsd:string">685137666468</serial><costprice xsi:type="xsd:float">13.58</costprice></reply></ns1:getVoucherResponse></SOAP-ENV:Body></SOAP-ENV:Envelope>
+    http_version: 
   recorded_at: Sun, 31 Mar 2013 10:43:20 GMT
 - request:
     method: post
     uri: https://api.mxit.com/message/send/
     body:
       encoding: US-ASCII
-      string: "{\"From\":null,\"SpoolTimeout\":82800,\"Body\":\"Your airtime voucher\
-        \ is available in the $airtime vouchers$ section.\",\"To\":\"m2604100\",\"\
-        ContainsMarkup\":\"true\"}"
+      string: '{"From":null,"SpoolTimeout":82800,"Body":"Your airtime voucher is available
+        in the $airtime vouchers$ section.","To":"m2604100","ContainsMarkup":"true"}'
     headers:
       Authorization:
       - c71219af53f5409e9d1db61db8a08248
@@ -209,7 +204,11 @@ http_interactions:
       Server:
       - Microsoft-IIS/7.5
       Www-Authenticate:
-      - Bearer realm="MXit Authorization", error="invalid_request", error_description="The request has an invalid 'Authorization' header. 'Bearer' authentication is expected.",Bearer realm="MXit Authorization", error="invalid_request", error_description="The request has an invalid 'Authorization' header. 'Bearer' authentication is expected."
+      - Bearer realm="MXit Authorization", error="invalid_request", error_description="The
+        request has an invalid 'Authorization' header. 'Bearer' authentication is
+        expected.",Bearer realm="MXit Authorization", error="invalid_request", error_description="The
+        request has an invalid 'Authorization' header. 'Bearer' authentication is
+        expected."
       X-Aspnet-Version:
       - 4.0.30319
       X-Powered-By:
@@ -218,8 +217,62 @@ http_interactions:
       - Sun, 31 Mar 2013 10:43:21 GMT
     body:
       encoding: US-ASCII
-      string: "\"The request has an invalid 'Authorization' header. 'Bearer' authentication\
-        \ is expected.\""
-    http_version:
+      string: '"The request has an invalid ''Authorization'' header. ''Bearer'' authentication
+        is expected."'
+    http_version: 
   recorded_at: Sun, 31 Mar 2013 10:43:22 GMT
+- request:
+    method: get
+    uri: http://soma.smaato.net/oapi/reqAd.jsp?adspace=&apiver=413&pub=&response=HTML
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/534.34 (KHTML, like Gecko)
+        PhantomJS/1.9.0 Safari/534.34
+      X-Forwarded-For:
+      - 127.0.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      - must-revalidate
+      - no-cache
+      - no-store
+      - no-transform
+      - post-check=0
+      - pre-check=0
+      - private
+      Content-Type:
+      - text/html;charset=utf-8
+      Date:
+      - Tue, 30 Apr 2013 12:03:25 GMT
+      Expires:
+      - Thu, 01 Dec 1994 16:00:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Somaerror:
+      - '106; Unknown publisher id null; adspace id: null'
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: <p><img src="http://ec2-54-243-160-90.compute-1.amazonaws.com/oapi/img/adspacer.gif?e=106"
+        alt="" /></p>
+    http_version: 
+  recorded_at: Tue, 30 Apr 2013 12:03:25 GMT
 recorded_with: VCR 2.4.0

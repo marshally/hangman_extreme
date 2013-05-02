@@ -35,6 +35,19 @@ class ChallengeGame < ActiveRecord::Base
     "<ChallengeGame id:#{id} completed:#{completed} started:#{started}>"
   end
 
+  def add_choice(letter)
+    self.choices ||= ""
+    return if completed? || letter.to_s.size > 1
+    letter.downcase!
+    if letter =~ /\p{Lower}/
+      next_participant unless word.include?(letter)
+      self.choices += letter
+    end
+  end
+
+  def next_participant
+    self.active_participant = participants.where('id <> ?',active_participant.id).first
+  end
 
   protected
 
@@ -50,7 +63,10 @@ class ChallengeGame < ActiveRecord::Base
   end
 
   def self.new_game_for_user(user)
-    ChallengeGame.create(participants: [user.challenge_game_participants.build])
+    game = ChallengeGame.create(participants: [user.challenge_game_participants.build])
+    game.active_participant = game.participants.first
+    game.save
+    game
   end
 
 end

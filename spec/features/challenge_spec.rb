@@ -50,7 +50,6 @@ describe 'challenge', :redis => true, :shinka_vcr => true, :smaato_vcr => true d
     using_session(:facebook) do
       page.should have_content("Your Turn")
       page.should have_content("_ _ _ _ _ _ _ _ _ _")
-      sleep 20
       click_letter 'a'
       page.should have_content("_ _ a _ _ _ _ _ _ _")
     end

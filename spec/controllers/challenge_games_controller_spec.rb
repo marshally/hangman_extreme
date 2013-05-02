@@ -63,4 +63,34 @@ describe ChallengeGamesController do
 
   end
 
+  describe "GET play_letter" do
+
+    before :each do
+      @challenge_game = create(:challenge_game, choices: "a")
+      @challenge_game.add_user(@current_user)
+      @challenge_game.add_user(create(:user))
+    end
+
+    def do_get_play_letter
+      get :play_letter, :id => @challenge_game.to_param, :letter => "g"
+    end
+
+    it "assigns the requested challenge_game as @challenge_game" do
+      do_get_play_letter
+      assigns(:challenge_game).should eq(@challenge_game)
+    end
+
+    it "assigns the letter to the challenge_game" do
+      do_get_play_letter
+      @challenge_game.reload
+      @challenge_game.choices.should include("g")
+    end
+
+    it "redirect to @challenge_game" do
+      do_get_play_letter
+      response.should redirect_to(@challenge_game)
+    end
+
+  end
+
 end
