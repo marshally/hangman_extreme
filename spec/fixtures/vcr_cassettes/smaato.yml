@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       Accept:
-      - "*/*"
+      - '*/*'
       User-Agent:
       - Ruby
   response:
@@ -36,7 +36,7 @@ http_interactions:
       Server:
       - Apache
       Somaerror:
-      - ! '106; Unknown publisher id null; adspace id: null'
+      - '106; Unknown publisher id null; adspace id: null'
       Vary:
       - Accept-Encoding
       Content-Length:
@@ -45,9 +45,9 @@ http_interactions:
       - keep-alive
     body:
       encoding: US-ASCII
-      string: "<p><img src=\"http://falcon833.startdedicated.com/oapi/img/adspacer.gif?e=106\"\
-        \ alt=\"\" /></p>"
-    http_version:
+      string: <p><img src="http://falcon833.startdedicated.com/oapi/img/adspacer.gif?e=106"
+        alt="" /></p>
+    http_version: 
   recorded_at: Fri, 05 Apr 2013 12:27:00 GMT
 - request:
     method: get
@@ -57,7 +57,7 @@ http_interactions:
       string: ''
     headers:
       Accept:
-      - "*/*"
+      - '*/*'
       User-Agent:
       - Ruby
   response:
@@ -85,7 +85,7 @@ http_interactions:
       Server:
       - Apache
       Somaerror:
-      - ! '106; Unknown publisher id null; adspace id: null'
+      - '106; Unknown publisher id null; adspace id: null'
       Vary:
       - Accept-Encoding
       Content-Length:
@@ -94,9 +94,9 @@ http_interactions:
       - keep-alive
     body:
       encoding: US-ASCII
-      string: "<p><img src=\"http://falcon835.startdedicated.com/oapi/img/adspacer.gif?e=106\"\
-        \ alt=\"\" /></p>"
-    http_version:
+      string: <p><img src="http://falcon835.startdedicated.com/oapi/img/adspacer.gif?e=106"
+        alt="" /></p>
+    http_version: 
   recorded_at: Fri, 05 Apr 2013 12:27:01 GMT
 - request:
     method: get
@@ -106,13 +106,14 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.0 Safari/534.34
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/534.34 (KHTML, like Gecko)
+        PhantomJS/1.9.0 Safari/534.34
       X-Forwarded-For:
       - 127.0.0.1
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - "*/*"
+      - '*/*'
   response:
     status:
       code: 200
@@ -138,7 +139,7 @@ http_interactions:
       Server:
       - Apache
       Somaerror:
-      - ! '106; Unknown publisher id null; adspace id: null'
+      - '106; Unknown publisher id null; adspace id: null'
       Vary:
       - Accept-Encoding
       Content-Length:
@@ -147,9 +148,9 @@ http_interactions:
       - keep-alive
     body:
       encoding: UTF-8
-      string: "<p><img src=\"http://ec2-50-19-218-141.compute-1.amazonaws.com/oapi/img/adspacer.gif?e=106\"\
-        \ alt=\"\" /></p>"
-    http_version:
+      string: <p><img src="http://ec2-50-19-218-141.compute-1.amazonaws.com/oapi/img/adspacer.gif?e=106"
+        alt="" /></p>
+    http_version: 
   recorded_at: Thu, 25 Apr 2013 12:18:08 GMT
 - request:
     method: get
@@ -159,11 +160,12 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Mozilla Compatible/5.0 Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:14.0) Gecko/20100101 Firefox/14.0.1
+      - Mozilla Compatible/5.0 Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:14.0)
+        Gecko/20100101 Firefox/14.0.1
       X-Forwarded-For:
       - 127.0.0.1
       Accept:
-      - "*/*"
+      - '*/*'
   response:
     status:
       code: 200
@@ -172,7 +174,8 @@ http_interactions:
       Vary:
       - Accept
       Set-Cookie:
-      - OX_u=635b1665-9717-e168-0bbe-8e13b9837a2d_a_1367327037; Version=1; Expires=Wed, 30-Apr-2014 13:03:58 GMT; Max-Age=31536000; Path=/
+      - OX_u=635b1665-9717-e168-0bbe-8e13b9837a2d_a_1367327037; Version=1; Expires=Wed,
+        30-Apr-2014 13:03:58 GMT; Max-Age=31536000; Path=/
       Server:
       - MochiWeb/1.1 WebMachine/1.9.2 (someone had painted it blue)
       Pragma:
@@ -190,7 +193,7 @@ http_interactions:
       Cache-Control:
       - private, max-age=0, no-cache
       Access-Control-Allow-Origin:
-      - "*"
+      - '*'
       Connection:
       - close
     body:
@@ -226,6 +229,112 @@ http_interactions:
           ]
          }
         }
-    http_version:
+    http_version: 
   recorded_at: Tue, 30 Apr 2013 13:03:58 GMT
+- request:
+    method: get
+    uri: http://soma.smaato.net/oapi/reqAd.jsp?adspace=&apiver=413&pub=&response=HTML
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:14.0) Gecko/20100101 Firefox/14.0.1
+      X-Forwarded-For:
+      - 127.0.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      - must-revalidate
+      - no-cache
+      - no-store
+      - no-transform
+      - post-check=0
+      - pre-check=0
+      - private
+      Content-Type:
+      - text/html;charset=utf-8
+      Date:
+      - Wed, 22 May 2013 15:39:05 GMT
+      Expires:
+      - Thu, 01 Dec 1994 16:00:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Somaerror:
+      - '106; Unknown publisher id null; adspace id: null'
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: <p><img src="http://ec2-107-21-120-96.compute-1.amazonaws.com/oapi/img/adspacer.gif?e=106"
+        alt="" /></p>
+    http_version: 
+  recorded_at: Wed, 22 May 2013 15:39:05 GMT
+- request:
+    method: get
+    uri: http://soma.smaato.net/oapi/reqAd.jsp?adspace=&apiver=413&pub=&response=HTML
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:14.0) Gecko/20100101 Firefox/14.0.1
+      X-Forwarded-For:
+      - 127.0.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      - must-revalidate
+      - no-cache
+      - no-store
+      - no-transform
+      - post-check=0
+      - pre-check=0
+      - private
+      Content-Type:
+      - text/html;charset=utf-8
+      Date:
+      - Thu, 23 May 2013 07:26:06 GMT
+      Expires:
+      - Thu, 01 Dec 1994 16:00:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Somaerror:
+      - '106; Unknown publisher id null; adspace id: null'
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: <p><img src="http://ec2-50-19-220-176.compute-1.amazonaws.com/oapi/img/adspacer.gif?e=106"
+        alt="" /></p>
+    http_version: 
+  recorded_at: Thu, 23 May 2013 07:26:06 GMT
 recorded_with: VCR 2.4.0

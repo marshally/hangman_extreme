@@ -16,4 +16,42 @@ describe ChallengeGameParticipant do
 
   end
 
+  context "Scopes" do
+
+    describe "active" do
+
+      it "returns active particpants" do
+        particpant = create(:challenge_game_participant, active: true)
+        create(:challenge_game_participant, active: false)
+        ChallengeGameParticipant.active.should == [particpant]
+      end
+
+    end
+
+  end
+
+  context "Instance Methods" do
+
+    describe "turn_done!" do
+
+      it "must inactive" do
+        particpant = create(:challenge_game_participant, active: true)
+        particpant.turn_done!
+        ChallengeGameParticipant.find(particpant.id).should_not be_active
+      end
+
+    end
+
+    describe "turn_start!" do
+
+      it "must inactive" do
+        particpant = create(:challenge_game_participant, active: false)
+        particpant.turn_start!
+        ChallengeGameParticipant.find(particpant.id).should be_active
+      end
+
+    end
+
+  end
+
 end

@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(:version => 20130527082033) do
     t.integer  "challenge_game_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "active",            default: false, null: false
   end
 
   add_index "challenge_game_participants", ["challenge_game_id"], name: "index_challenge_game_participants_on_challenge_game_id"
@@ -75,12 +76,11 @@ ActiveRecord::Schema.define(:version => 20130527082033) do
   create_table "challenge_games", force: true do |t|
     t.string   "word"
     t.text     "choices"
-    t.boolean  "completed",             default: false
-    t.boolean  "started",               default: false
     t.integer  "active_participant_id"
     t.integer  "participants_count"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "state"
   end
 
   create_table "feedback", force: true do |t|

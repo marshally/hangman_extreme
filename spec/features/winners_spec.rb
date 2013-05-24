@@ -41,7 +41,6 @@ shared_examples "a winner viewer" do
       page.should have_content(winner.name)
     end
     click_link('random')
-    puts random_users.inspect
     random_users.each do |winner|
       page.should have_content(winner.name)
     end

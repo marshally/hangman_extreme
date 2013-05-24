@@ -9,7 +9,6 @@ class ChallengeGameObserver < ActiveRecord::Observer
   private
 
   def publish(*args)
-    puts redis_connection.inspect
     redis_connection.publish(*args)
   end
 

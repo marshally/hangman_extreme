@@ -16,9 +16,6 @@ describe ChallengeGame do
   context "Associations" do
 
     it { should have_many(:participants).class_name('ChallengeGameParticipant') }
-    it { should have_one(:active_participant).class_name('ChallengeGameParticipant') }
-    it { should have_one(:active_user).through(:active_participant).class_name('User') }
-    it { should have_many(:users).through(:participants).class_name('User') }
 
   end
 
@@ -27,9 +24,8 @@ describe ChallengeGame do
     describe "completed" do
 
       it "returns completed games" do
-        game = create(:challenge_game, completed: true)
-        create(:challenge_game, completed: nil)
-        create(:challenge_game, completed: false)
+        game = create(:challenge_game, state: 'completed')
+        create(:challenge_game)
         ChallengeGame.completed.should == [game]
       end
 
@@ -37,12 +33,10 @@ describe ChallengeGame do
 
     describe "incompleted" do
 
-      it "returns incompleted games" do
-        create(:challenge_game, completed: true)
-        game1 = create(:challenge_game, completed: nil)
-        game2 = create(:challenge_game, completed: false)
-        ChallengeGame.incompleted.should include(game1,game2)
-        ChallengeGame.incompleted.count.should == 2
+      it "returns incomplete games" do
+        create(:challenge_game, state: 'completed')
+        game = create(:challenge_game)
+        ChallengeGame.incompleted.should == [game]
       end
 
     end
@@ -50,9 +44,8 @@ describe ChallengeGame do
     describe "started" do
 
       it "returns started games" do
-        game = create(:challenge_game, started: true)
-        create(:challenge_game, started: nil)
-        create(:challenge_game, started: false)
+        game = create(:challenge_game, state: 'started')
+        create(:challenge_game)
         ChallengeGame.started.should == [game]
       end
 
@@ -61,11 +54,19 @@ describe ChallengeGame do
     describe "not_started" do
 
       it "returns not_started games" do
-        create(:challenge_game, started: true)
-        game1 = create(:challenge_game, started: nil)
-        game2 = create(:challenge_game, started: false)
-        ChallengeGame.not_started.should include(game1,game2)
-        ChallengeGame.not_started.count.should == 2
+        create(:challenge_game, state: 'started')
+        game = create(:challenge_game)
+        ChallengeGame.not_started.should == [game]
+      end
+
+    end
+
+    describe "waiting_for_opponent_game" do
+
+      it "returns started games" do
+        game = create(:challenge_game, state: 'waiting_for_opponent')
+        create(:challenge_game)
+        ChallengeGame.waiting_for_opponent.should == [game]
       end
 
     end
@@ -74,83 +75,48 @@ describe ChallengeGame do
 
   context "Instance Methods" do
 
-    describe "add_user" do
+    describe "active_player" do
 
-      it "must add the user to the game" do
-        game = create(:challenge_game)
-        user1 = create(:user)
-        game.add_user(user1)
-        user2 = create(:user)
-        game.add_user(user2)
-        game.users.should include(user1,user2)
-        game.participants_count == 2
-        game.users.count.should == 2
+      it "returns active player" do
+        game = create(:challenge_game, state: 'started')
+        player = create(:challenge_game_participant, active: true, challenge_game: game)
+        create(:challenge_game_participant, active: false, challenge_game: game)
+        create(:challenge_game_participant, active: true)
+        game.active_player.should == player
       end
 
-      it "must start the game if there are 2 users" do
-        game = create(:challenge_game)
-        game.add_user(create(:user))
-        game.add_user(create(:user))
-        ChallengeGame.find(game.id).should be_started
-      end
-
-      it "wont start the game if there is 1 user" do
-        game = create(:challenge_game)
-        game.add_user(create(:user))
-        ChallengeGame.find(game.id).should_not be_started
+      it "returns nil if no player" do
+        game = create(:challenge_game, state: 'started')
+        create(:challenge_game_participant, active: false, challenge_game: game)
+        create(:challenge_game_participant, active: true)
+        game.active_player.should be_nil
       end
 
     end
 
-    context "add_choice" do
+    describe "active_player="  do
 
       before :each do
-        @game = ChallengeGame.new(word: "test")
-        @game.stub!(:next_participant)
+        @game = create(:challenge_game, state: 'started')
+        @particpant1 = create(:challenge_game_participant, active: false, challenge_game: @game)
+        @particpant2 = create(:challenge_game_participant, active: false, challenge_game: @game)
       end
 
-      it "must allow to add choices" do
-        @game.add_choice("a")
-        @game.choices.should include("a")
+      it "must allow to set active participant" do
+        @game.active_player = @particpant1
+        @particpant1.reload
+        @particpant1.should be_active
+        @game.active_player.should == @particpant1
       end
 
-      it "must swap active participant if wrong choice" do
-        @game.should_receive(:next_participant)
-        @game.add_choice("a")
-      end
-
-      it "wont swap active participant if right choice" do
-        @game.should_not_receive(:next_participant)
-        @game.add_choice("t")
-      end
-
-      it "wont allow to add choices if more than a letter" do
-        @game.should_not_receive(:next_participant)
-        @game.add_choice("ab")
-        @game.choices.should_not include("a")
-        @game.choices.should_not include("b")
-      end
-
-      it "wont allow to add choices if completed" do
-        @game.completed = true
-        @game.add_choice("a")
-        @game.choices.should_not include("a")
-      end
-
-      it "must downcase letters" do
-        @game.add_choice("C")
-        @game.choices.should include("c")
-      end
-
-      it "must be able to add all letters" do
-        ("a".."z").each do |letter|
-          @game.add_choice(letter)
-          @game.choices.should include(letter)
-        end
-        ("1".."9").each do |number|
-          @game.add_choice(number)
-          @game.choices.should_not include(number)
-        end
+      it "must allow to change the active participant" do
+        @game.active_player = @particpant1
+        @game.active_player = @particpant2
+        @particpant1.reload
+        @particpant1.should_not be_active
+        @particpant2.reload
+        @particpant2.should be_active
+        @game.active_player.should == @particpant2
       end
 
     end
@@ -162,64 +128,26 @@ describe ChallengeGame do
     describe "find_for_user" do
 
       before :each do
-        @user = stub_model(User)
-        @user.stub!(:active_challenge_game).and_return(nil)
-        @challenge_game = stub_model(ChallengeGame)
-      end
-
-      it "must look for active games on user" do
-        @user.should_receive(:active_challenge_game).and_return(nil)
-        ChallengeGame.find_for_user(@user)
+        @user = create(:user)
       end
 
       it "must find active challenge game already part" do
-        @user.stub!(:active_challenge_game).and_return(@challenge_game)
-        ChallengeGame.find_for_user(@user).should == @challenge_game
-      end
-
-      it "must search for a game waiting for a opponent" do
-        ChallengeGame.should_receive(:waiting_for_opponent_game).with(@user).and_return(nil)
-        ChallengeGame.find_for_user(@user)
+        challenge_game = create(:challenge_game)
+        create(:challenge_game_participant, active: false, challenge_game: challenge_game, user: @user)
+        ChallengeGame.find_for_user(@user).should == challenge_game
       end
 
       it "must use game waiting for a opponent" do
-        ChallengeGame.stub!(:waiting_for_opponent_game).and_return(@challenge_game)
-        ChallengeGame.find_for_user(@user).should == @challenge_game
-      end
-
-      it "must create a new game" do
-        ChallengeGame.should_receive(:create).with(anything)
-        ChallengeGame.find_for_user(@user)
+        challenge_game = create(:challenge_game)
+        challenge_game.add_player(create(:user).challenge_game_participants.build)
+        ChallengeGame.find_for_user(@user).should == challenge_game
+        @user.active_challenge_game.should == challenge_game
       end
 
       it "must return created game" do
-        ChallengeGame.stub!(:create).and_return(@challenge_game)
-        ChallengeGame.find_for_user(@user).should == @challenge_game
+        challenge_game = ChallengeGame.find_for_user(@user)
+        @user.active_challenge_game.should == challenge_game
       end
-
-    end
-
-    describe "waiting_for_opponent_game" do
-
-        before :each do
-          @user = stub_model(User)
-          @challenge_game = stub_model(ChallengeGame)
-          ChallengeGame.stub_chain("incompleted.not_started.random_order.first").and_return(@challenge_game)
-        end
-
-        it "must return first incompleted and not started in random order" do
-          ChallengeGame.waiting_for_opponent_game(@user).should == @challenge_game
-        end
-
-        it "must return nil if first incompleted and not started in random order is nil" do
-          ChallengeGame.stub_chain("incompleted.not_started.random_order.first").and_return(nil)
-          ChallengeGame.waiting_for_opponent_game(@user).should == nil
-        end
-
-        it "must add user to challenge game" do
-          @challenge_game.should_receive(:add_user).with(@user)
-          ChallengeGame.waiting_for_opponent_game(@user)
-        end
 
     end
 

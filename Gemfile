@@ -29,6 +29,7 @@ gem 'whenever', :require => false
 gem 'sidekiq'
 gem 'protected_attributes' # todo favor Strong Parameters
 gem 'rails-observers'
+gem 'state_machine'
 
 gem 'sinatra', '>= 1.3.0', :require => nil # for sidekiq
 gem 'slim', :require => nil # for sidekiq
